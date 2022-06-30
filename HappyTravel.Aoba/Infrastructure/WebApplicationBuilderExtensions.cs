@@ -13,6 +13,8 @@ public static class WebApplicationBuilderExtensions
             options.Servers = endpoints;
             options.MaxReconnect = Options.ReconnectForever;
         }, ServiceLifetime.Singleton);
+        
+        // TODO: add vault and mail sender settings
 
         return builder;
     }
