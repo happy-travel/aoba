@@ -1,0 +1,16 @@
+﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "HappyTravel.Aoba": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Local",
+        "HTDC_WEBAPI_PORT": "5150",
+        "HTDC_GRPC_PORT": "5151",
+        "HTDC_HEALTH_PORT": "60005",
+        "HTDC_METRICS_PORT": "60006"
+      }
+    }
+  }
+}
