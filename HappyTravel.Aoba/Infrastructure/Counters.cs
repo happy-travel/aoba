@@ -9,6 +9,6 @@ public class Counters
         "Mail sent counter",
         new CounterConfiguration
         {
-            LabelNames = new [] {"isSuccessful"}
+            LabelNames = new [] {"isSuccess"}
         });
 }
