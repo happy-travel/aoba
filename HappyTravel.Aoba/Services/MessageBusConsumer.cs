@@ -7,10 +7,10 @@ namespace HappyTravel.Aoba.Services;
 
 public class MessageBusConsumer : BackgroundService
 {
-    public MessageBusConsumer(IConnection connection, IMailSendService mailSendService)
+    public MessageBusConsumer(IConnection connection, ISendMailService sendMailService)
     {
         _connection = connection;
-        _mailSendService = mailSendService;
+        _sendMailService = sendMailService;
     }
 
     
@@ -26,11 +26,11 @@ public class MessageBusConsumer : BackgroundService
         Task.Run(async () =>
         {
             var message = JsonSerializer.Deserialize<MailMessage>(args.Message.Data);
-            await _mailSendService.SendMail(message);
+            await _sendMailService.SendMail(message);
         });
     }
     
     
     private readonly IConnection _connection;
-    private readonly IMailSendService _mailSendService;
+    private readonly ISendMailService _sendMailService;
 }

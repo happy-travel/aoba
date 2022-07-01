@@ -49,7 +49,7 @@ public static class WebApplicationBuilderExtensions
 
         builder.Services.AddHealthChecks();
         builder.Services.AddHostedService<MessageBusConsumer>();
-        builder.Services.AddTransient<IMailSendService, MailSendService>();
+        builder.Services.AddTransient<ISendMailService, SendMailService>();
 
         return builder;
     }

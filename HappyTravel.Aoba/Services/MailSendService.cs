@@ -5,9 +5,9 @@ using HappyTravel.MailSender;
 
 namespace HappyTravel.Aoba.Services;
 
-public class MailSendService : IMailSendService
+public class SendMailService : ISendMailService
 {
-    public MailSendService(ILogger<MailSendService> logger, DiagnosticSource diagnosticSource, IMailSender mailSender)
+    public SendMailService(ILogger<SendMailService> logger, DiagnosticSource diagnosticSource, IMailSender mailSender)
     {
         _logger = logger;
         _diagnosticSource = diagnosticSource;
@@ -17,7 +17,7 @@ public class MailSendService : IMailSendService
 
     public async Task SendMail(MailMessage? message)
     {
-        using var updaterActivity = _diagnosticSource.StartActivity(new Activity(nameof(SendMail)), null);
+        using var activity = _diagnosticSource.StartActivity(new Activity(nameof(SendMail)), null);
 
         try
         {
@@ -50,7 +50,7 @@ public class MailSendService : IMailSendService
     }
 
 
-    private readonly ILogger<MailSendService> _logger;
+    private readonly ILogger<SendMailService> _logger;
     private readonly DiagnosticSource _diagnosticSource;
     private readonly IMailSender _mailSender;
 }
