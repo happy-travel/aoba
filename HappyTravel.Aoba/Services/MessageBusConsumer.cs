@@ -1,7 +1,8 @@
-using System.Text.Json;
+using System.Text;
 using HappyTravel.Aoba.Infrastructure;
 using HappyTravel.Aoba.Models;
 using NATS.Client;
+using Newtonsoft.Json;
 
 namespace HappyTravel.Aoba.Services;
 
@@ -25,7 +26,7 @@ public class MessageBusConsumer : BackgroundService
     {
         Task.Run(async () =>
         {
-            var message = JsonSerializer.Deserialize<MailMessage>(args.Message.Data);
+            var message = JsonConvert.DeserializeObject<MailMessage>(Encoding.UTF8.GetString(args.Message.Data));
             await _sendMailService.SendMail(message);
         });
     }
